@@ -54,15 +54,16 @@ public class MalletController : MonoBehaviour {
 				Vector3 localtouchCache = Camera.main.ScreenToWorldPoint(touch.position);
 				RaycastHit hit;
 				if (Physics.Raycast (ray, out hit, 100)) {
-					//Debug.Log (hit.collider.gameObject);
+					Debug.DrawRay (ray.origin, ray.direction * 1000f, Color.red);
+						//Debug.Log (hit.collider.gameObject);
 					if (hit.collider.gameObject == player1) {
-						if (localtouchCache.z <= 0) {
-							player1.transform.position = new Vector3 (worldPos.x, 0f, -1);
+						if (hit.point.z <= 0) {
+							player1.transform.position = new Vector3 (hit.point.x, 0f, hit.point.z);
 						}
 					} else if (hit.collider.gameObject == player2) 
 					{
-						if (localtouchCache.z >= 0) {
-							player2.transform.position = new Vector3 (worldPos.x, 0f, 1);
+						if (hit.point.z >= 0) {
+							player2.transform.position = new Vector3 (hit.point.x, 0f, hit.point.z);
 						}
 					}
 				}
