@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 	public static GameManager instance;
+	public GameObject ball;
 	private int p1score = 0;
 	private int p2score = 0;
 	public Text p1ScoreText;
@@ -28,20 +29,31 @@ public class GameManager : MonoBehaviour {
 		
 	}
 
-	public void AddScore ( int player ) {
+	public void AddScore ( int player, bool respawn ) {
+//		update score for relevant player
 		if (player == 1) {
 			p1score++;
 			p1ScoreText.text = p1score.ToString ();
-			if (p1score == 10) {
-				GameOver (1);
-			}
 		} else if (player == 2) {
 			p2score++;
 			p2ScoreText.text = p2score.ToString ();
-			if (p2score == 10) {
-				GameOver (2);
-			}
 		}
+//		check for game over, else respawn ball
+		if (p1score == 10)
+			GameOver (1);
+		else if (p2score == 10)
+			GameOver (2);
+		else if (respawn) {
+			StartCoroutine (RespawnBall (3 - player));
+		}
+	}
+
+	IEnumerator RespawnBall ( int side ) {
+		yield return new WaitForSecondsRealtime (2);
+		if (side == 1)
+			Instantiate (ball);
+		else if (side == 2)
+			Instantiate (ball, new Vector3 (0f, 0.3f, 5f), Quaternion.identity);
 	}
 
 	private void GameOver( int playerWon ) {

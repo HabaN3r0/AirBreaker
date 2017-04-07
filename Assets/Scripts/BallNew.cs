@@ -14,14 +14,14 @@ public class BallNew : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if(Input.GetButtonDown("Fire1")&& ballInPlay==false){
-			transform.parent = null;
-			ballInPlay = true;
-			rb.isKinematic = false;
-			rb.AddForce(new Vector3(0,0,ballInitialVelocity));
-		}
-	}
+//	void Update () {
+//		if(Input.GetButtonDown("Fire1")&& ballInPlay==false){
+//			transform.parent = null;
+//			ballInPlay = true;
+//			rb.isKinematic = false;
+//			rb.AddForce(new Vector3(0,0,ballInitialVelocity));
+//		}
+//	}
 
 	void FixedUpdate () {
 		float horiz = Input.GetAxis ("Horizontal");

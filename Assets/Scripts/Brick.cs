@@ -17,7 +17,7 @@ public class Brick : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter (Collision collision) {
-		if (collision.gameObject.tag != "Ball")
+		if (collision.gameObject.tag != "Ball" && collision.gameObject.tag != "ExtraBall")
 			return;
 		rend.enabled = false;
 		col.enabled = false;
