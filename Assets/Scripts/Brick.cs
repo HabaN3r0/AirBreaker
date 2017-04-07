@@ -16,11 +16,12 @@ public class Brick : MonoBehaviour {
 //		gm = GameManager.instance;
 	}
 	
-	void OnCollisionEnter () {
+	void OnCollisionEnter (Collision collision) {
+		if (collision.gameObject.tag != "Ball")
+			return;
 		rend.enabled = false;
 		col.enabled = false;
 		float rand = Random.value;
-		// gm.AddScore (1);
 		if (rand < 0.9) {
 			StartCoroutine (Respawn ());
 		} else {

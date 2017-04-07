@@ -16,4 +16,5 @@ public class Ball : MonoBehaviour {
 		float vert = Input.GetAxis ("Vertical");
 		rb.AddForce( new Vector3 (horiz, 0.0f, vert) * speed );
 	}
+
 }

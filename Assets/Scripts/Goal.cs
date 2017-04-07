@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Goal : MonoBehaviour {
-
-	void onCollisionEnter(Collider other){
-		if (other.gameObject.tag == "Ball")
+	
+	void OnTriggerEnter(Collider other){
+		if (other.tag == "Ball")
 			Destroy (other.gameObject);
 	}
 
