@@ -11,6 +11,7 @@ public class BallNew : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		rb = GetComponent<Rigidbody> ();
+		ballInPlay = false;
 	}
 	
 	// Update is called once per frame
@@ -22,6 +23,19 @@ public class BallNew : MonoBehaviour {
 //			rb.AddForce(new Vector3(0,0,ballInitialVelocity));
 //		}
 //	}
+
+	void OnCollisionEnter(Collision other) {
+		if (other.gameObject.tag == "Mallet") {
+			Vector3 otherPos = other.gameObject.transform.position;
+			Vector3 thisPos = this.transform.position;
+			if (ballInPlay) {
+				rb.AddForce (new Vector3 (thisPos.x - otherPos.x, 0.0f, thisPos.z - otherPos.z) * 300);
+				ballInPlay = true;
+			} else {
+				rb.AddForce (new Vector3 (thisPos.x - otherPos.x, 0.0f, thisPos.z - otherPos.z) * 200);
+			}
+		}
+	}
 
 	void FixedUpdate () {
 		float horiz = Input.GetAxis ("Horizontal");
