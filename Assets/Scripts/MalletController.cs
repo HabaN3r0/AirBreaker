@@ -8,31 +8,17 @@ public class MalletController : MonoBehaviour {
 	public GameObject player1;
 	public GameObject player2;
 	//A modifier which affects the rackets speed
-	public float speed;
+//	public float speed;
 	//Fraction defined by user that will limit the touch area
-	public int frac=2;
 	//public int id;
 	//Private Variables
-	private float fracScreenWidth;
-	private float fracScreenHeight;
-	private float widthMinusFrac;
-	private float heightMinusFrac;
-	private Vector3 touchCache;
 	private Vector3 player1Pos;
 	private Vector3 player2Pos;
 	private bool touched = false;
-	private int screenHeight;
-	private int screenWidth;
 	// Use this for initialization
 	void Start () 
 	{
 		//Cache called function variables
-		screenHeight = Screen.height;
-		screenWidth = Screen.width;
-		fracScreenWidth = screenWidth / frac;
-		widthMinusFrac = screenWidth - fracScreenWidth;
-		fracScreenHeight = screenHeight / frac;
-		heightMinusFrac = screenHeight - fracScreenHeight;
 		player1Pos = player1.transform.position;
 		player2Pos = player2.transform.position;
 	}
@@ -50,19 +36,19 @@ public class MalletController : MonoBehaviour {
 
 				//Cache touch position
 				Ray ray = Camera.main.ScreenPointToRay(touch.position);
-				Vector3 worldPos = Camera.main.ScreenToWorldPoint (touch.position);
-				Vector3 localtouchCache = Camera.main.ScreenToWorldPoint(touch.position);
+//				Vector3 worldPos = Camera.main.ScreenToWorldPoint (touch.position);
+//				Vector3 localtouchCache = Camera.main.ScreenToWorldPoint(touch.position);
 				RaycastHit hit;
 				if (Physics.Raycast (ray, out hit, 100)) {
 					Debug.DrawRay (ray.origin, ray.direction * 1000f, Color.red);
 						//Debug.Log (hit.collider.gameObject);
 					if (hit.collider.gameObject == player1) {
-						if (hit.point.z <= 0) {
+						if (hit.point.z <= -2.32f&&hit.point.z >= -9.8f) {
 							player1.transform.position = new Vector3 (hit.point.x, 0f, hit.point.z);
 						}
 					} else if (hit.collider.gameObject == player2) 
 					{
-						if (hit.point.z >= 0) {
+						if (hit.point.z >= 2.32f&&hit.point.z <= 9.8f) {
 							player2.transform.position = new Vector3 (hit.point.x, 0f, hit.point.z);
 						}
 					}
