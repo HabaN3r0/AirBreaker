@@ -43,12 +43,12 @@ public class MalletController : MonoBehaviour {
 					Debug.DrawRay (ray.origin, ray.direction * 1000f, Color.red);
 						//Debug.Log (hit.collider.gameObject);
 					if (hit.collider.gameObject == player1) {
-						if (hit.point.z <= -2.32f&&hit.point.z >= -9.8f) {
+						if (hit.point.z <= -2.3f&&hit.point.z >= -9.7f) {
 							player1.transform.position = new Vector3 (hit.point.x, 0f, hit.point.z);
 						}
 					} else if (hit.collider.gameObject == player2) 
 					{
-						if (hit.point.z >= 2.32f&&hit.point.z <= 9.8f) {
+						if (hit.point.z >= 2.3f&&hit.point.z <= 9.7f) {
 							player2.transform.position = new Vector3 (hit.point.x, 0f, hit.point.z);
 						}
 					}
