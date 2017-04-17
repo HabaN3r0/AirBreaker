@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 	public static GameManager instance;
@@ -58,5 +59,6 @@ public class GameManager : MonoBehaviour {
 
 	private void GameOver( int playerWon ) {
 		gameOverText.text = "Player " + playerWon.ToString () + " won!";
-	}
+        SceneManager.LoadScene("mainmenuscene");
+    }
 }
