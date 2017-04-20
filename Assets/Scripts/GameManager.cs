@@ -41,9 +41,9 @@ public class GameManager : MonoBehaviour {
 		}
 //		check for game over, else respawn ball
 		if (p1score == 10)
-			GameOver (1);
+			StartCoroutine (GameOver (1));
 		else if (p2score == 10)
-			GameOver (2);
+			StartCoroutine (GameOver (2));
 		else if (respawn) {
 			StartCoroutine (RespawnBall (3 - player));
 		}
@@ -57,8 +57,9 @@ public class GameManager : MonoBehaviour {
 			Instantiate (ball, new Vector3 (0f, 0.3f, 5f), Quaternion.identity);
 	}
 
-	private void GameOver( int playerWon ) {
+	private IEnumerator GameOver( int playerWon ) {
 		gameOverText.text = "Player " + playerWon.ToString () + " won!";
+		yield return new WaitForSecondsRealtime (2);
         SceneManager.LoadScene("mainmenuscene");
     }
 }
