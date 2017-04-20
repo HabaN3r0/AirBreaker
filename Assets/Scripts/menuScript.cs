@@ -44,12 +44,14 @@ public class menuScript : MonoBehaviour {
 		quitMenu.enabled = true;
 		startText.enabled = false;
 		exitText.enabled = false;
+		gameMenu.enabled = false;
 	}
 
 	public void NoPress(){
 		quitMenu.enabled = false;
 		startText.enabled = true;
 		exitText.enabled = true;
+		gameMenu.enabled = true;
 	}
 
     public void SettingsPress()

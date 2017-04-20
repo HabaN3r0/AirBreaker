@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 2b88dbb77ca584d708e54e41ea0d0d27
+timeCreated: 1492693161
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Earth Orbiter Halftone
+  fontNames:
+  - Earth Orbiter Halftone
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
