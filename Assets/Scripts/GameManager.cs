@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour {
 	public Text p2ScoreText;
 	public Text gameOverText;
 
-	// Use this for initialization
-	void Start () {
+	// Awake() is used so that it runs before other objects' Start()
+	void Awake () {
 		if (instance == null) {
 			instance = this;
 		} else if (instance != this) {
@@ -24,12 +24,8 @@ public class GameManager : MonoBehaviour {
 		p1ScoreText.text = p1score.ToString ();
 		p2ScoreText.text = p2score.ToString ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
+	// called by goalposts when ball is scored
 	public void AddScore ( int player, bool respawn ) {
 //		update score for relevant player
 		if (player == 1) {
@@ -49,6 +45,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	// wait for 2s, then instantiate ball on the respective player's side
 	IEnumerator RespawnBall ( int side ) {
 		yield return new WaitForSecondsRealtime (2);
 		if (side == 1)
@@ -57,6 +54,7 @@ public class GameManager : MonoBehaviour {
 			Instantiate (ball, new Vector3 (0f, 0.3f, 5f), Quaternion.identity);
 	}
 
+	// show which player won, wait 2s, then switch to main menu
 	private IEnumerator GameOver( int playerWon ) {
 		gameOverText.text = "Player " + playerWon.ToString () + " won!";
 		yield return new WaitForSecondsRealtime (2);

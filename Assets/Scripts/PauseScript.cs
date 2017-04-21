@@ -15,7 +15,6 @@ public class PauseScript : MonoBehaviour {
     public Button quitButton;
     public Button exitButton;
 
-    // Use this for initialization
     void Start () {
         pauseMenu = pauseMenu.GetComponent<Canvas>();
         settingsMenu = settingsMenu.GetComponent<Canvas>();
@@ -58,8 +57,4 @@ public class PauseScript : MonoBehaviour {
         SceneManager.LoadScene(0);
     }
     
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }

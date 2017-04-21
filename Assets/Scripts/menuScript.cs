@@ -10,18 +10,17 @@ public class menuScript : MonoBehaviour {
 	public Canvas quitMenu;
     public Canvas settingsMenu;
     public Canvas gameMenu;
-    //public Canvas  diffMenu;
 	public Button startText;
 	public Button exitText;
     public Button closeText;
-   // public Button typeText;
-    //public Button vibOn;
+    //public Button typeText;
+    //public Button vibOn;		// vibration controls not currently implemented
     //public Button vibOff;
     public Slider musicSlider;
     public bool checkVib = false;
     // public AudioListener backSound;
 	// public float VolumeSliderValue = 0.6f;
-	// Use this for initialization
+
 	void Start () {
 		quitMenu = quitMenu.GetComponent<Canvas> ();
         settingsMenu = settingsMenu.GetComponent<Canvas>();
@@ -93,9 +92,5 @@ public class menuScript : MonoBehaviour {
     public void setMusic()
     {
     	AudioListener.volume = musicSlider.value/10;
-    }
-	// Update is called once per frame
-	void Update () {
-
     }
 }

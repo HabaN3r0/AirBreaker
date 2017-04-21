@@ -7,26 +7,9 @@ public class MalletController : MonoBehaviour {
 	//Public Variables
 	public GameObject player1;
 	public GameObject player2;
-	//A modifier which affects the rackets speed
-//	public float speed;
-	//Fraction defined by user that will limit the touch area
-	//public int id;
-	//Private Variables
-	private Vector3 player1Pos;
-	private Vector3 player2Pos;
-	private bool touched = false;
-	// Use this for initialization
-	void Start () 
-	{
-		//Cache called function variables
-		player1Pos = player1.transform.position;
-		player2Pos = player2.transform.position;
-	}
-
-	// Update is called once per frame
+		
 	void Update () 
 	{
-
 		//If a touch is detected
 		if (Input.touchCount >= 0)
 		{
@@ -36,12 +19,11 @@ public class MalletController : MonoBehaviour {
 
 				//Cache touch position
 				Ray ray = Camera.main.ScreenPointToRay(touch.position);
-//				Vector3 worldPos = Camera.main.ScreenToWorldPoint (touch.position);
-//				Vector3 localtouchCache = Camera.main.ScreenToWorldPoint(touch.position);
 				RaycastHit hit;
 				if (Physics.Raycast (ray, out hit, 100)) {
 					Debug.DrawRay (ray.origin, ray.direction * 1000f, Color.red);
-						//Debug.Log (hit.collider.gameObject);
+
+					// if touch is near player's mallet and within his half of the game board, move the mallet to the touch position
 					if (hit.collider.gameObject == player1) {
 						if (hit.point.z <= -2.2f&&hit.point.z >= -9.0f && hit.point.x >= -5.6f && hit.point.x <= 5.6f) {
 							player1.transform.position = new Vector3 (hit.point.x, 0f, hit.point.z);
@@ -54,7 +36,6 @@ public class MalletController : MonoBehaviour {
 				}
 
 			}
-			touched = true;
 		}
 	}
 }
